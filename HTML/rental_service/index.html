@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>index rental service</title>
+   <style>
+            table {
+                width: 90%;
+                background: #339999;
+                margin: 10px auto;
+                border-collapse: collapse;
+            }
+            th,td {
+                height: 25px;
+                line-height: 25px;
+                text-align: center;
+                border: 1px solid #606060;
+            }
+            th {
+                background: #339999;
+                font-weight: normal;
+            }
+            tr {
+                background: #ffffff;
+            }
+            tr:hover {
+                background: #ccffff;
+            }
+            td a {
+                color: #06f;
+                text-decoration: none;
+            }
+            td a:hover {
+                color: #06f;
+                text-decoration: underline;
+            }
+        </style>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+</head>
+
+<body>
+<table border="1px" width="100%" style="border-collapse: collapse;">
+    <a href="../rental_service/insert">Add Rental Service</a>
+    <a href="../">GO Back</a>
+    <tr>
+		<th style="text-align: center">Service ID</th>
+		<th style="text-align: center">Pickup Location</th>
+		<th style="text-align: center">Dropoff Location</th>
+		<th style="text-align: center">Pickup Date</th>
+		<th style="text-align: center">Dropoff Date</th>
+		<th style="text-align: center">Start Odometer</th>
+		<th style="text-align: center">End Odometer</th>
+		<th style="text-align: center">VIN</th>
+		<th style="text-align: center">Company ID</th>
+		<th style="text-align: center">Coupon ID</th>
+		<th style="text-align: center">Customer ID</th>
+    </tr>
+    {% for rental_service in rental_services %}
+        <tr>
+            <td style="text-align: center">{{ forloop.counter }} </td>
+			<td style="text-align: center">{{ zmk_rental_service.pickup_location }} </td>
+			<td style="text-align: center">{{ zmk_rental_service.dropoff_location }} </td>
+            <td style="text-align: center">{{ zmk_rental_service.pickup_date }} </td>
+			<td style="text-align: center">{{ zmk_rental_service.dropoff_date }} </td>
+			<td style="text-align: center">{{ zmk_rental_service.start_odometer }} </td>
+			<td style="text-align: center">{{ zmk_rental_service.end_odometer }} </td>
+			<td style="text-align: center">{{ zmk_rental_service.vin }} </td>
+			<td style="text-align: center">{{ zmk_rental_service.company_id }} </td>
+			<td style="text-align: center">{{ zmk_rental_service.coupon_id }} </td>
+			<td style="text-align: center">{{ zmk_rental_service.customer_id }} </td>
+			<td style="text-align: center">
+                <a href="../rental_service/update/?id={{ zmk_rental_service.service_id }}">
+                    Edit
+                </a>
+                <a href="../rental_service/delete/?id={{ zmk_rental_service.service_id }}">
+                    Delete
+                </a>
+
+
+            </td>
+        </tr>
+    {% endfor %}
+</table>
+{% if delete_error_msg %}
+    <div id="error-msg">
+        <span style="color: rgba(255,53,49,0.8); font-family: cursive;">{{ delete_error_msg }}</span>
+    </div>
+{% endif %}
+</body>
+</html>

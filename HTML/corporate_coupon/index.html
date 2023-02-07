@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>index corporate coupon</title>
+   <style>
+            table {
+                width: 90%;
+                background: #339999;
+                margin: 10px auto;
+                border-collapse: collapse;
+            }
+            th,td {
+                height: 25px;
+                line-height: 25px;
+                text-align: center;
+                border: 1px solid #606060;
+            }
+            th {
+                background: #339999;
+                font-weight: normal;
+            }
+            tr {
+                background: #ffffff;
+            }
+            tr:hover {
+                background: #ccffff;
+            }
+            td a {
+                color: #06f;
+                text-decoration: none;
+            }
+            td a:hover {
+                color: #06f;
+                text-decoration: underline;
+            }
+        </style>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+</head>
+
+<body>
+<table border="1px" width="100%" style="border-collapse: collapse;">
+    <a href="../corporate_coupon/insert">Add Vehicle</a>
+    <a href="../">GO Back</a>
+    <tr>
+		<th style="text-align: center">Coupon ID</th>
+		<th style="text-align: center">Discount</th>
+    </tr>
+    {% for corporate_coupon in corporate_coupons %}
+        <tr>
+            <td style="text-align: center">{{ forloop.counter }} </td>
+            <td style="text-align: center">{{ zmk_corporate_coupon.discount_percentage }} </td>
+			<td style="text-align: center">
+                <a href="../vehicle/update/?id={{ zmk_corporate_coupon.coupon_id }}">
+                    Edit
+                </a>
+                <a href="../vehicle/delete/?id={{ zmk_corporate_coupon.coupon_id }}">
+                    Delete
+                </a>
+
+
+            </td>
+        </tr>
+    {% endfor %}
+</table>
+{% if delete_error_msg %}
+    <div id="error-msg">
+        <span style="color: rgba(255,53,49,0.8); font-family: cursive;">{{ delete_error_msg }}</span>
+    </div>
+{% endif %}
+</body>
+</html>

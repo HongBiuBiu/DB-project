@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>index vehicle</title>
+   <style>
+            table {
+                width: 90%;
+                background: #339999;
+                margin: 10px auto;
+                border-collapse: collapse;
+            }
+            th,td {
+                height: 25px;
+                line-height: 25px;
+                text-align: center;
+                border: 1px solid #606060;
+            }
+            th {
+                background: #339999;
+                font-weight: normal;
+            }
+            tr {
+                background: #ffffff;
+            }
+            tr:hover {
+                background: #ccffff;
+            }
+            td a {
+                color: #06f;
+                text-decoration: none;
+            }
+            td a:hover {
+                color: #06f;
+                text-decoration: underline;
+            }
+        </style>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+</head>
+
+<body>
+<table border="1px" width="100%" style="border-collapse: collapse;">
+    <a href="../vehicle/insert">Add Vehicle</a>
+    <a href="../">GO Back</a>
+    <tr>
+		<th style="text-align: center">Vehicle ID</th>
+		<th style="text-align: center">VIN</th>
+        <th style="text-align: center">Make</th>
+        <th style="text-align: center">Model</th>
+        <th style="text-align: center">Year</th>
+		<th style="text-align: center">Lisence Plate Number</th>
+		<th style="text-align: center">Class Name</th>
+    </tr>
+    {% for vehicle in vehicles %}
+        <tr>
+            <td style="text-align: center">{{ forloop.counter }} </td>
+            <td style="text-align: center">{{ zmk_vehicle.vin }} </td>
+            <td style="text-align: center">{{ zmk_vehicle.make }} </td>
+			<td style="text-align: center">{{ zmk_vehicle.model }} </td>
+			<td style="text-align: center">{{ zmk_vehicle.year }} </td>
+			<td style="text-align: center">{{ zmk_vehicle.licence_plate_number }} </td>
+			<td style="text-align: center">{{ zmk_vehicle.class_name }} </td>
+			<td style="text-align: center">
+                <a href="../vehicle/update/?id={{ zmk_vehicle.vin }}">
+                    Edit
+                </a>
+                <a href="../vehicle/delete/?id={{ zmk_vehicle.vin }}">
+                    Delete
+                </a>
+                
+			
+            </td>
+        </tr>
+    {% endfor %}
+</table>
+{% if delete_error_msg %}
+    <div id="error-msg">
+        <span style="color: rgba(255,53,49,0.8); font-family: cursive;">{{ delete_error_msg }}</span>
+    </div>
+{% endif %}
+</body>
+</html>

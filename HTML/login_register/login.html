@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>login and register</title>
+   <style>
+
+body{ background: url("logo.jpg");
+    background-repeat: no-repeat;
+    background-size: 100%;
+    html{height:100%};
+    background-attachment:fixed;
+}
+
+form {
+            margin: 30px auto;
+            width: 500px;
+            border: 1px solid transparent;
+            padding: 20px
+        }
+input[type=username], select {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  box-sizing: border-box;
+}
+
+input[type=password], select {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  box-sizing: border-box;
+}
+
+button{
+  width: 220px;
+  background-color: #00CCCC;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #66CCCC;
+}
+
+
+</style>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+</head>
+<body>
+<div style="text-align: center; margin-top: 50px">
+<form method="post" action="./">
+    {% csrf_token %}
+	<h2 class="form-signin-heading">Welcome to WOW</h2>
+	<p>
+	<input aria-label="Username" type="username" name="username" required autofocus>
+	</p>
+	<p>
+	<input aria-label="Password" type="password" name="password" required>
+	</p>
+	<p>
+	{% if login_error_msg %}
+		<div id="error-msg">
+			<span style="color: rgba(255,53,49,0.8); font-family: cursive;">{{ login_error_msg }}</span>
+		</div>
+	{% endif %}
+<div style="text-align: left; margin-top: 50px">
+	<p>
+		<a href="./customer">
+		<button>Customer Login</button>
+		</a>
+
+		<a href="./employee">
+		<button>Employee Login</button>
+		</a>
+	</p>
+	<p>
+				Don't have an account？<a href="../user/insert">Register Now</a>
+			</p>
+    </div>
+</form>
+</div>
+</body>
+</html>

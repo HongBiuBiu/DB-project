@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>individual customer update</title>
+   <style>
+body{ background: url("bk.jpg");
+    background-repeat: no-repeat;
+    background-size: 100%;
+    html{height:100%};
+    background-attachment:fixed;
+}
+input[type=text], select {
+  width: 30%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  box-sizing: border-box;
+}
+input[type=date], select {
+  width: 30%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  box-sizing: border-box;
+}
+input[type=number], select {
+  width: 30%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  box-sizing: border-box;
+}
+
+input[type=submit], select {
+  width: 30%;
+  background-color: #00CCCC;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+input[type=submit]:hover {
+  background-color: #66CCCC;
+}
+
+
+</style>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+</head>
+<body>
+<div style="text-align: center; margin-top: 50px">
+<form method="post" action="../update/">
+    {% csrf_token %}
+	 <h2>INDIVIDUAL CUSTOMER</h2>
+     <p>
+	 Customer ID <input type="number" name="zmk_customer_id" value="{{ zmk_customer.zmk_customer_id }}" readonly="readonly">
+</p>
+	<h3>Address Information</h3>
+    <p>
+        Street <input type="text" name="ctr_street" value="{{ zmk_customer.ctr_street }}">
+	    </p>
+	<p>
+		City <input type="text" name="ctr_city" value="{{ zmk_customer.ctr_city }}">
+		</p>
+	<p>
+       State <input type="text" name="ctr_state" value="{{ zmk_customer.ctr_state }}">
+	    </p>
+	<p>
+       Zipcode <input type="text" name="ctr_zipcode" value="{{ zmk_customer.ctr_zipcode }}">
+	    </p>
+
+	<h3>Personal Information</h3>
+	<p>
+		Email <input type="text" name="ctr_email" value="{{ zmk_customer.ctr_email }}">
+		</p>
+
+	<p>
+		  Phone Number <input type="text" name="ctr_phone_number" value="{{ zmk_customer.ctr_phone_number }}">
+		</p>
+ <h3>Identity Information</h3>
+		<p>
+		    First Name <input type="text" name="fname" value="{{ zmk_individual_customer.fname }}">
+		</p>
+    <p>
+       Middle Name <input type="text" name="mname" value="{{ zmk_individual_customer.mname }}">
+	    </p>
+	<p>
+      Last Name <input type="text" name="lname" value="{{ zmk_individual_customer.lname }}">
+	    </p>
+	<p>
+       Driver Licence Number <input type="text" name="driving_licence_number" value="{{ zmk_individual_customer.driving_licence_number }}">
+	    </p>
+	<h3>Insurance Information</h3>
+	<p>
+		Insurance Company <input type="text" name="insurance_company_name" value="{{ zmk_individual_customer.insurance_company_name }}">
+		</p>
+	<p>
+		 Insurance Policy Number <input type="text" name="insurance_policy_number" value="{{ zmk_individual_customer.insurance_policy_number }}">
+		</p>
+		<p>
+			<input type="submit" value="Submit">
+		</p>
+
+
+</form>
+    </div>
+</body>
+</html>

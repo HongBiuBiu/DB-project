@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>rental service update</title>
+    <style>
+body{ background: url("bk.jpg");
+    background-repeat: no-repeat;
+    background-size: 100%;
+    html{height:100%};
+    background-attachment:fixed;
+}
+input[type=text], select {
+  width: 30%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  box-sizing: border-box;
+}
+input[type=date], select {
+  width: 30%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  box-sizing: border-box;
+}
+input[type=number], select {
+  width: 30%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  box-sizing: border-box;
+}
+
+input[type=submit], select {
+  width: 30%;
+  background-color: #00CCCC;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+input[type=submit]:hover {
+  background-color: #66CCCC;
+}
+
+
+</style>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+</head>
+<body>
+<div style="text-align: center; margin-top: 50px">
+<form method="post" action="../update/">
+    {% csrf_token %}
+    <h2>RENTAL SERVICE</h2>
+        <p>
+            Service ID <input type="number" name="service_id" value="{{ zmk_rental_service.service_id }}" readonly="readonly">
+        </p>
+       <p>
+		   Pickup Location <input type="text" name="pickup_location" value="{{ zmk_rental_service.pickup_location }}">
+		</p>
+		<p>
+		    Dropoff Location <input type="text" name="dropoff_location" value="{{ zmk_rental_service.dropoff_location }}">
+		</p>
+		<p>
+		    Pickup Date <input type="date" name="pickup_date" value="{{ zmk_rental_service.pickup_date }}">
+		</p>
+		<p>
+		    Dropoff Date <input type="date" name="dropoff_date" value="{{ zmk_rental_service.dropoff_date }}">
+		</p>
+		<p>
+		    Start Odometer <input type="number" name="start_odometer" value="{{ zmk_rental_service.start_odometer }}">
+		</p>
+		<p>
+		    End Odometer <input type="number" name="end_odometer" value="{{ zmk_rental_service.end_odometer }}">
+		</p>
+		<p>
+		    VIN <input type="text" name="vin" value="{{ zmk_rental_service.vin }}">
+		</p>
+		<p>
+		    Company ID <input type="text" name="company_id" value="{{ zmk_rental_service.company_id }}">
+		</p>
+		<p>
+		    Coupon ID <input type="text" name="coupon_id" value="{{ zmk_rental_service.coupon_id }}">
+		</p>
+		<p>
+		    Customer ID <input type="text" name="customer_id" value="{{ zmk_rental_service.customer_id }}">
+		</p>
+    <p>
+            <input type="submit" value="Submit">
+        </p>
+
+</form>
+    </div>
+</body>
+</html>

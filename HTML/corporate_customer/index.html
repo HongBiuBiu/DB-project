@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>index corporate customer</title>
+   <style>
+            table {
+                width: 90%;
+                background: #339999;
+                margin: 10px auto;
+                border-collapse: collapse;
+            }
+            th,td {
+                height: 25px;
+                line-height: 25px;
+                text-align: center;
+                border: 1px solid #606060;
+            }
+            th {
+                background: #339999;
+                font-weight: normal;
+            }
+            tr {
+                background: #ffffff;
+            }
+            tr:hover {
+                background: #ccffff;
+            }
+            td a {
+                color: #06f;
+                text-decoration: none;
+            }
+            td a:hover {
+                color: #06f;
+                text-decoration: underline;
+            }
+        </style>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+</head>
+
+<body>
+<table border="1px" width="100%" style="border-collapse: collapse;">
+    <a href="../corporate_customer/insert">Add Corporate Customer</a>
+    <a href="../">GO Back</a>
+    <tr>
+		<th style="text-align: center">Customer ID</th>
+        <th style="text-align: center">Street</th>
+        <th style="text-align: center">city</th>
+        <th style="text-align: center">state</th>
+        <th style="text-align: center">Zipcode</th>
+		<th style="text-align: center">Email</th>
+		<th style="text-align: center">Phone Number</th>
+		<th style="text-align: center">Company Name</th>
+        <th style="text-align: center">Employee ID</th>
+        <th style="text-align: center">Corporate Account</th>
+    </tr>
+    {% for corporate_customer in corporate_customers %}
+        <tr>
+            <td style="text-align: center">{{ forloop.counter }} </td>
+            <td style="text-align: center">{{ zmk_customer.ctr_street }} </td>
+            <td style="text-align: center">{{ zmk_customer.ctr_city }} </td>
+			<td style="text-align: center">{{ zmk_customer.ctr_state }} </td>
+			<td style="text-align: center">{{ zmk_customer.ctr_zipcode }} </td>
+			<td style="text-align: center">{{ zmk_customer.ctr_email }} </td>
+			<td style="text-align: center">{{ zmk_customer.ctr_phone_number }} </td>
+			<td style="text-align: center">{{ zmk_corporate_customer.corporate_name }} </td>
+            <td style="text-align: center">{{ zmk_corporate_customer.employee_id }} </td>
+			<td style="text-align: center">{{ zmk_corporate_customer.corporate_account }} </td>
+			<td style="text-align: center">
+                <a href="../corporate_customer/update/?id={{ zmk_corporate_customer.customer_id }}">
+                    Edit
+                </a>
+                <a href="../corporate_customer/delete/?id={{ zmk_corporate_customer.customer_id }}">
+                    Delete
+                </a>
+
+
+            </td>
+        </tr>
+    {% endfor %}
+</table>
+{% if delete_error_msg %}
+    <div id="error-msg">
+        <span style="color: rgba(255,53,49,0.8); font-family: cursive;">{{ delete_error_msg }}</span>
+    </div>
+{% endif %}
+</body>
+</html>
